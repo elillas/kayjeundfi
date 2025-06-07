@@ -12,4 +12,6 @@ urlpatterns = [
     # Define a URL pattern for the blog_and_review view
     path('blogs&reviews/<int:pk>/', views.blog_and_review_detail_view, name='detail_blog_review'),
 
+    # URL pattern for affiliate link generator page
+    path('affiliate-link-generator/', views.affiliate_link_generator_view, name='affiliate_link_generator'),
 ]

@@ -94,3 +94,8 @@ def blog_and_review_detail_view(request, pk):
 
     # Render the 'blog_and_review_detail.html' template with the context
     return render(request, 'homepage_html/blog_and_review_detail.html', context)
+
+
+# View to render the affiliate link generator page
+def affiliate_link_generator_view(request):
+    return render(request, 'affiliate_link_generator.html')
