@@ -1,4 +1,11 @@
 from django.contrib import admin
+from .models import AliExpressProduct
+
+@admin.register(AliExpressProduct)
+class AliExpressProductAdmin(admin.ModelAdmin):
+    list_display = ('title', 'price', 'url')
+    search_fields = ('title',)
+
 from .models import HomepageSoftware, BlogAndReview, Message  # Import models to register in the admin interface
 from .forms import HomepageSoftwareForm, BlogAndReviewForm  # Import custom forms for HomepageSoftware and BlogAndReview
 from django.urls import reverse  # Import the reverse function to construct URLs based on view names and arguments
