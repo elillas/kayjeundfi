@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Générateur de lien affilié AliExpress</title>
+</head>
+<body>
+    <h2>Générer un lien affilié AliExpress</h2>
+    <input type="text" id="productLink" placeholder="Colle ici un lien produit AliExpress" style="width: 400px;"/>
+    <button onclick="generateAffiliate()">Générer lien affilié</button>
+
+    <p id="result" style="margin-top: 10px;"></p>
+
+    <script>
+      function generateAffiliate() {
+        const input = document.getElementById("productLink").value.trim();
+        if (!input) {
+          alert("Veuillez coller un lien produit AliExpress valide.");
+          return;
+        }
+        const encoded = encodeURIComponent(input);
+        const shortKey = "omkalS0"; // Ton short_key affilié
+        const affiliateLink = `https://s.click.aliexpress.com/deep_link.htm?dl_target_url=${encoded}&aff_short_key=${shortKey}`;
+        document.getElementById("result").innerHTML = `<a href="${affiliateLink}" target="_blank">${affiliateLink}</a>`;
+      }
+    </script>
+</body>
+</html>
