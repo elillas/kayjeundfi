@@ -65,11 +65,14 @@ WSGI_APPLICATION = 'Fastworldtec.wsgi.application'  # WSGI application module
 import os
 import dj_database_url
 
+import dj_database_url
+import os
+
 DATABASES = {
     'default': dj_database_url.config(
-        default='mysql://root:elimane97@localhost:3307/fastworldtec_database',
+        default='postgresql://kayjeunfi_db_user:1hojKBSWWp7Ug6aH0fxb6sXQvhPGkF3n@dpg-d11orec9c44c73fj47fg-a/kayjeunfi_db',
         conn_max_age=600,
-        ssl_require=False
+        ssl_require=True
     )
 }
 
