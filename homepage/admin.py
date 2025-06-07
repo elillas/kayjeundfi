@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import AliExpressProduct
+from .models import Product
 
-@admin.register(AliExpressProduct)
-class AliExpressProductAdmin(admin.ModelAdmin):
-    list_display = ('title', 'price', 'url')
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('title', 'price', 'affiliate_link')
     search_fields = ('title',)
 
 from .models import HomepageSoftware, BlogAndReview, Message  # Import models to register in the admin interface
