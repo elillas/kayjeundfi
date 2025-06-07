@@ -1,5 +1,5 @@
 from django import forms
-from .models import HomepageSoftware, BlogAndReview
+from .models import HomepageSoftware, BlogAndReview, Message
 
 class ContactForm(forms.Form):
     full_name = forms.CharField(max_length=100, required=True)
@@ -15,3 +15,8 @@ class BlogAndReviewForm(forms.ModelForm):
     class Meta:
         model = BlogAndReview
         fields = '__all__'
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ['full_name', 'email', 'message']
