@@ -1,4 +1,7 @@
-from django.shortcuts import render  # Import the render function to render documents
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.conf import settings
+from .forms import ContactForm
 from django.http import JsonResponse  # Import JsonResponse for sending JSON responses
 from django.contrib import messages  # Import messages framework for displaying messages
 from .models import HomepageSoftware, BlogAndReview, Message, Product  # Import models for querying the database
@@ -123,3 +126,24 @@ def shop_view(request):
         'products': products,
     }
     return render(request, 'homepage_html/shop.html', context)
+
+
+def contact_form_submit(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            full_name = form.cleaned_data['full_name']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+            subject = f"Contact Form Submission from {full_name}"
+            message_body = f"Name: {full_name}\nEmail: {email}\n\nMessage:\n{message}"
+            try:
+                send_mail(subject, message_body, settings.DEFAULT_FROM_EMAIL, ['diengelillas@gmail.com'])
+                return redirect('homepage:shop')  # Redirect to shop page or success page
+            except Exception as e:
+                # Log error or handle as needed
+                return render(request, 'homepage_html/shop.html', {'form': form, 'error': 'Error sending email. Please try again later.'})
+        else:
+            return render(request, 'homepage_html/shop.html', {'form': form})
+    else:
+        return redirect('homepage:shop')

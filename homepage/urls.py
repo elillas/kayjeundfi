@@ -17,4 +17,7 @@ urlpatterns = [
 
     # URL pattern for shop page
     path('shop/', views.shop_view, name='shop'),
+
+    # URL pattern for contact form submission
+    path('contact/submit/', views.contact_form_submit, name='contact_form_submit'),
 ]

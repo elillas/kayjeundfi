@@ -26,9 +26,9 @@
     <!-- Heading for the contact section -->
     <h2>Get in Touch</h2>
     <!-- Contact form -->
-    <form id="contact-form" method="POST" action="mailto:diengelillas@gmail.com">
+<form id="contact-form" method="POST" action="{% url 'homepage:contact_form_submit' %}">
         <!-- CSRF token for security -->
-        <input type="hidden" name="csrfmiddlewaretoken" value="CUglIAtcp0oSq6VGIhqAPsiNsxgFqDsDpCDq8SUh7A7ko1lELjNQMHzlCUM2bXez">
+        {% csrf_token %}
         <!-- Input field for full name -->
         <input type="text" name="full_name" placeholder="Your Full Name" required="">
         <!-- Input field for email -->
