@@ -32,6 +32,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',  # Security middleware
     'django.contrib.sessions.middleware.SessionMiddleware',  # Session middleware
+    'django.middleware.locale.LocaleMiddleware',  # Middleware pour la gestion de la langue
     'django.middleware.common.CommonMiddleware',  # Common middleware
     'django.middleware.csrf.CsrfViewMiddleware',  # CSRF protection middleware
     'django.contrib.auth.middleware.AuthenticationMiddleware',  # Authentication middleware
@@ -65,11 +66,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # Database engine (MySQL)
         'NAME': 'fastworldtec_database',  # Name of the database
-        'HOST': 'localhost',  # Database host
-        'PORT': '3306',  # Database port
+        'HOST': 'localhost',   # Database host changed to localhost for local dev
+        'PORT': '3307',  # Database port changed to match docker-compose port mapping
         'USER': 'root',  # Database user
-        'PASSWORD': 'jayzac',  # Database password
-    }
+        'PASSWORD': 'elimane97',  # Database password updated as provided
+        }
 }
 
 # Password validation
@@ -92,7 +93,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 
-LANGUAGE_CODE = 'en-us'  # Default language code
+LANGUAGE_CODE = 'fr'  # Langue par défaut mise en français
 
 TIME_ZONE = 'Africa/Nairobi'  # Default time zone
 

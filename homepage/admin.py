@@ -1,19 +1,13 @@
-from django.contrib import admin  # Import Django's admin module to register models
+from django.contrib import admin
 from .models import HomepageSoftware, BlogAndReview, Message  # Import models to register in the admin interface
 from .forms import HomepageSoftwareForm, BlogAndReviewForm  # Import custom forms for HomepageSoftware and BlogAndReview
 from django.urls import reverse  # Import the reverse function to construct URLs based on view names and arguments
 from django.http import HttpResponseRedirect  # Import HttpResponseRedirect to handle HTTP redirects
 
-# Customize the Django admin site titles
-
-# Set the title of the admin site (appears in browser tab)
-admin.site.site_title = 'fastworldtec'
-
-# Set the header title on the admin site pages
-admin.site.site_header = 'fastworldtec Admin'
-
-# Set the title of the index page (homepage) in the admin interface
-admin.site.index_title = 'Admin'
+# Customizing the Django admin site headers and titles to change the site name and display in French
+admin.site.site_header = "KayJeundFi Administration"
+admin.site.site_title = "KayJeundFi Admin Portal"
+admin.site.index_title = "Bienvenue sur KayJeundFi"
 
 
 # Define a custom admin class for the HomepageSoftware model

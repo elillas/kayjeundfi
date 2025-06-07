@@ -1,0 +1,32 @@
+# docker-compose.yml
+
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: fastworldtec_database
+      MYSQL_ROOT_PASSWORD: elimane97
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  web:
+    build: .
+    ports:
+      - "8001:8001"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - db
+    command: >
+      sh -c "pip install --no-cache-dir Pillow && python manage.py runserver 0.0.0.0:8001"
+volumes:
+  mysql_data:

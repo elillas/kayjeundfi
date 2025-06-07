@@ -697,7 +697,9 @@ nav {
     -webkit-line-clamp: 3; /* Limit to 3 lines */
     -webkit-box-orient: vertical; /* Vertical box orientation */
     overflow: hidden; /* Hide overflow */
+    line-clamp: 3; /* Standard property for compatibility */
 }
+
 
 .blog-link {
     display: inline-block; /* Inline block layout */

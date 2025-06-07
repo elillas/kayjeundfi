@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: kayjeundfi
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn kayjeundfi.wsgi:application"
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: DJANGO_ALLOWED_HOSTS
+        value: "kayjeundfi.onrender.com"
+      - key: SECRET_KEY
+        generateValue: true
