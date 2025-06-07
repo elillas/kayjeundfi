@@ -9,7 +9,7 @@ SECRET_KEY = 'mio1!c+4c=9#(2!$g3-@m-*=4#b^92-1$yje+j3v^6susvc1#c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True  # Debug mode toggle (set to False in production)
 
-ALLOWED_HOSTS = []  # List of allowed hosts for the application
+ALLOWED_HOSTS = ['kayjeundfi.onrender.com']  # Added Render deployment hostname to allowed hosts
 
 # Application definition
 
