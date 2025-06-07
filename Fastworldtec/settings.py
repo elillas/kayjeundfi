@@ -70,7 +70,7 @@ import os
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://kayjeunfi_db_user:1hojKBSWWp7Ug6aH0fxb6sXQvhPGkF3n@dpg-d11orec9c44c73fj47fg-a/kayjeunfi_db',
+        default='postgresql://kayjeunfi_db_user:1hojKBSWWp7Ug6aH0fxb6sXQvhPGkF3n@dpg-d11orec9c44c73fj47fg-a.frankfurt-postgres.render.com/kayjeunfi_db',
         conn_max_age=600,
         ssl_require=True
     )
