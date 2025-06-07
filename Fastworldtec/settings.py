@@ -62,15 +62,15 @@ WSGI_APPLICATION = 'Fastworldtec.wsgi.application'  # WSGI application module
 
 # Database
 
+import os
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',  # Database engine (MySQL)
-        'NAME': 'fastworldtec_database',  # Name of the database
-        'HOST': 'localhost',   # Database host changed to localhost for local dev
-        'PORT': '3307',  # Database port changed to match docker-compose port mapping
-        'USER': 'root',  # Database user
-        'PASSWORD': 'elimane97',  # Database password updated as provided
-        }
+    'default': dj_database_url.config(
+        default='mysql://root:elimane97@localhost:3307/fastworldtec_database',
+        conn_max_age=600,
+        ssl_require=False
+    )
 }
 
 # Password validation
