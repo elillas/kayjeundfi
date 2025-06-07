@@ -1,7 +1,7 @@
 from django.shortcuts import render  # Import the render function to render documents
 from django.http import JsonResponse  # Import JsonResponse for sending JSON responses
 from django.contrib import messages  # Import messages framework for displaying messages
-from .models import HomepageSoftware, BlogAndReview, Message  # Import models for querying the database
+from .models import HomepageSoftware, BlogAndReview, Message, Product  # Import models for querying the database
 from .forms import MessageForm  # Import the MessageForm for handling user messages
 
 
@@ -26,6 +26,13 @@ def homepage_view(request):
 
         # Display error message
         messages.error(request, f'An error occurred while retrieving blog and review items: {str(e)}')
+
+    try:
+        # Retrieve all products except beauty and makeup categories
+        products = Product.objects.exclude(category__iexact='beauty').exclude(category__iexact='maquillage')
+    except Exception as e:
+        products = []
+        messages.error(request, f'An error occurred while retrieving products: {str(e)}')
 
     # Handle POST requests to collect and save user messages
     if request.method == 'POST':
@@ -56,12 +63,14 @@ def homepage_view(request):
     # For non-POST requests, instantiate an empty form
     form = MessageForm()
 
-    # Prepare the context with software, blog and review data, and the form instance
+    # Prepare the context with software, blog and review data, products, and the form instance
     context = {
         # Add the retrieved software items to the context
         'homepage_software': homepage_software,
         # Add the retrieved blog and review items to the context
         'blog_and_review': blog_and_review,
+        # Add the products to the context
+        'products': products,
         # Add the form instance to the context
         'form': form,
 
@@ -99,3 +108,18 @@ def blog_and_review_detail_view(request, pk):
 # View to render the affiliate link generator page
 def affiliate_link_generator_view(request):
     return render(request, 'affiliate_link_generator.html')
+
+
+# View to render the shop page with products
+def shop_view(request):
+    try:
+        # Retrieve all products except beauty and makeup categories
+        products = Product.objects.exclude(category__iexact='beauty').exclude(category__iexact='maquillage')
+    except Exception as e:
+        products = []
+        messages.error(request, f'An error occurred while retrieving products: {str(e)}')
+
+    context = {
+        'products': products,
+    }
+    return render(request, 'homepage_html/shop.html', context)

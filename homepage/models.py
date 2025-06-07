@@ -92,3 +92,21 @@ class Message(models.Model):
     class Meta:
         # Order objects by creation date in descending order
         ordering = ('-date_created',)
+
+
+# Product model for AliExpress products
+class Product(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    price = models.CharField(max_length=50, blank=True)
+    image_url = models.URLField(max_length=2083, blank=True)
+    affiliate_link = models.URLField(max_length=2083)
+    category = models.CharField(max_length=100, blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ('-date_added',)
+        verbose_name_plural = 'Products'
+
+    def __str__(self):
+        return self.title

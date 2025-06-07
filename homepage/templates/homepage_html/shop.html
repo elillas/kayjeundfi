@@ -1,0 +1,25 @@
+{% extends "global_templates/base.html" %}
+{% load static %}
+
+{% block content %}
+<h1>Shop</h1>
+
+{% if products %}
+    <div class="product-list">
+        {% for product in products %}
+            <div class="product-item">
+                {% if product.image_url %}
+                    <img src="{{ product.image_url }}" alt="{{ product.title }}" class="product-image" />
+                {% endif %}
+                <h2>{{ product.title }}</h2>
+                <p>{{ product.description }}</p>
+                <p>Price: {{ product.price }}</p>
+                <a href="{{ product.affiliate_link }}" target="_blank" rel="noopener noreferrer">Buy Now</a>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No products available.</p>
+{% endif %}
+
+{% endblock %}

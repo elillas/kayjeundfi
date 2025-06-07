@@ -14,4 +14,7 @@ urlpatterns = [
 
     # URL pattern for affiliate link generator page
     path('affiliate-link-generator/', views.affiliate_link_generator_view, name='affiliate_link_generator'),
+
+    # URL pattern for shop page
+    path('shop/', views.shop_view, name='shop'),
 ]
