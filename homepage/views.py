@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
-from .forms import ContactForm
+from .forms import ContactForm, MessageForm
 from django.http import JsonResponse  # Import JsonResponse for sending JSON responses
 from django.contrib import messages  # Import messages framework for displaying messages
 from .models import HomepageSoftware, BlogAndReview, Message, Product  # Import models for querying the database
-from .forms import MessageForm  # Import the MessageForm for handling user messages
 
 
 # View for homepage Software section, blog and review section
